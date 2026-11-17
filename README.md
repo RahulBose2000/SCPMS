@@ -702,27 +702,7 @@ OTP_MAX_ATTEMPTS=5
 
 ---
 
-## Known Issues and To Be Confirmed
 
-Items noted while documenting the code. Please review and update this section.
-
-**Security / correctness**
-
-- Unauthenticated routes: `POST /superadmin/register`, `GET /superadmin/`, `GET /superadmin/:id`, and `POST /cloudinary/signature`. Confirm these are intentional, and consider protecting them.
-- Route order in `schedule.routes.ts`: `DELETE /:id` is declared before `DELETE /jobs`, so `/jobs` is matched by `/:id`. Move `/jobs` above `/:id`.
-- Department and skills write routes do not apply `requireActiveUser`.
-
-**Behaviour to confirm**
-
-- Company activation is routed for both `SUPER_ADMIN` and `ADMIN`. Confirm the intended owner of this step.
-- Exact router mount prefixes (defined in the app entry file).
-- Cookie options for tokens (`httpOnly`, `secure`, `sameSite`) and how the refresh token is delivered.
-- Which `NotificationType` events fire in practice and which also send an email.
-- Per-user switch to enable or disable in-app and email notifications: **not in the current schema**; treat as planned.
-- `ScheduleMode` enum (`ONLINE`, `OFFLINE`, `HYBRID`) exists but is not used by `InterviewSchedule`.
-- `Notification.entityId` / `entityType` are commented out in the schema, so notifications are not linked to a specific record yet.
-- Frontend framework and libraries.
-- Deployment target and instructions.
 
 **Planned**
 
